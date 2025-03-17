@@ -1,12 +1,14 @@
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   Map, Grid, Users, Award, Brain, BarChart3, Layers, 
-  ChevronDown, Play, ArrowRight
+  ChevronDown, Play, ArrowRight, Github, Twitter
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 import GridSection from "@/components/GridSection";
 import HeroSection from "@/components/HeroSection";
 import VideoSection from "@/components/VideoSection";
@@ -16,9 +18,20 @@ import FAQ from "@/components/FAQ";
 
 const Index = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
+  const [email, setEmail] = useState("");
   
   const scrollToFeatures = () => {
     featuresRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSubmitEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim() === "") {
+      toast.error("Please enter a valid email");
+      return;
+    }
+    toast.success("Thank you for joining! We'll be in touch.");
+    setEmail("");
   };
 
   return (
@@ -150,7 +163,7 @@ const Index = () => {
       {/* FAQ Section */}
       <FAQ />
       
-      {/* CTA Section */}
+      {/* CTA Section with Email Signup */}
       <section className="py-16 px-4 md:px-8 bg-gradient-to-r from-pink-600/90 via-purple-600/90 to-blue-600/90 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-30 bg-[url('https://i.imgur.com/JFuXgPK.jpg')] bg-cover bg-center"></div>
         <div className="max-w-5xl mx-auto text-center relative z-10">
@@ -174,53 +187,47 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
           >
-            <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none">
-              Reserve Your Grid
-            </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
-              Join Community <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <form onSubmit={handleSubmitEmail} className="w-full flex flex-col sm:flex-row gap-2">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-white/20 border-white/30 text-white placeholder:text-white/70"
+              />
+              <Button type="submit" size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none">
+                Subscribe
+              </Button>
+            </form>
           </motion.div>
         </div>
       </section>
       
       {/* Footer */}
       <footer className="py-12 px-4 md:px-8 bg-purple-950 text-purple-200">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-1">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="col-span-1">
             <h3 className="text-xl font-bold mb-4 text-white">Block City DAO</h3>
             <p className="mb-4">A community-governed, AI-empowered digital city ecosystem on the blockchain</p>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Explore</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition">City Map</a></li>
-              <li><a href="#" className="hover:text-white transition">Marketplace</a></li>
-              <li><a href="#" className="hover:text-white transition">Governance</a></li>
-              <li><a href="#" className="hover:text-white transition">Documentation</a></li>
-            </ul>
-          </div>
-          
-          <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Resources</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition">Whitepaper</a></li>
-              <li><a href="#" className="hover:text-white transition">Tokenomics</a></li>
-              <li><a href="#" className="hover:text-white transition">Blog</a></li>
-              <li><a href="#" className="hover:text-white transition">Partners</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Community</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition">Discord</a></li>
-              <li><a href="#" className="hover:text-white transition">Twitter</a></li>
-              <li><a href="#" className="hover:text-white transition">Telegram</a></li>
-              <li><a href="#" className="hover:text-white transition">GitHub</a></li>
+              <li><a href="#" className="hover:text-white transition flex items-center gap-2">
+                <span>Whitepaper</span>
+              </a></li>
+              <li><a href="#" className="hover:text-white transition flex items-center gap-2">
+                <span>Tokenomics</span>
+              </a></li>
+              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition flex items-center gap-2">
+                <Twitter className="h-4 w-4" /> <span>Twitter</span>
+              </a></li>
+              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition flex items-center gap-2">
+                <Github className="h-4 w-4" /> <span>GitHub</span>
+              </a></li>
             </ul>
           </div>
         </div>

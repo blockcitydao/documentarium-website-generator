@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Twitter } from "lucide-react";
 
 interface HeroSectionProps {
   scrollToFeatures: () => void;
@@ -35,8 +35,10 @@ const HeroSection = ({ scrollToFeatures }: HeroSectionProps) => {
             <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none">
               Explore the City
             </Button>
-            <Button variant="outline" size="lg" className="border-purple-300 text-purple-300 hover:bg-purple-300/20">
-              Learn More
+            <Button variant="outline" size="lg" className="border-purple-300 text-purple-300 hover:bg-purple-300/20" 
+              onClick={() => window.open('https://twitter.com', '_blank')}
+            >
+              <Twitter className="mr-2 h-4 w-4" /> Twitter
             </Button>
           </div>
           
