@@ -5,14 +5,19 @@ import { Card } from "@/components/ui/card";
 import GridCellItem from "./GridCellItem";
 import ZoneTabs from "./ZoneTabs";
 import LegendDisplay from "./LegendDisplay";
-import { generateNYCGrid } from "@/utils/cityGridData";
+import { cityZones } from "@/utils/cityGridData";
 
 const CityGrid = () => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const zones = ["A Zone", "B Zone", "C Zone"];
+  const [activeZoneIndex, setActiveZoneIndex] = useState(0);
   
-  // Create grid data for NYC
-  const gridData = generateNYCGrid();
+  // Get the active zone data
+  const zones = cityZones.map(zone => zone.name);
+  const activeZone = cityZones[activeZoneIndex];
+  
+  // Flatten grid data for display
+  const flattenedGrid = activeZone.grid.flat().map((cell, index) => {
+    return cell ? cell : { id: `empty-${index}` };
+  });
   
   return (
     <section className="py-20 px-4 md:px-8 relative overflow-hidden">
@@ -45,8 +50,8 @@ const CityGrid = () => {
         {/* Zone Tabs */}
         <ZoneTabs 
           zones={zones} 
-          activeTabIndex={activeTabIndex} 
-          setActiveTabIndex={setActiveTabIndex} 
+          activeTabIndex={activeZoneIndex} 
+          setActiveTabIndex={setActiveZoneIndex} 
         />
         
         {/* Grid Display */}
@@ -56,10 +61,10 @@ const CityGrid = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="bg-purple-900/30 rounded-lg pixel-corners p-4 border border-purple-500/30 backdrop-blur-sm"
         >
-          <div className="grid grid-cols-12 gap-1">
-            {gridData.map((row, rowIndex) => (
+          <div className="grid grid-cols-5 gap-1">
+            {activeZone.grid.map((row, rowIndex) => (
               row.map((cell, colIndex) => (
-                <GridCellItem key={`${rowIndex}-${colIndex}`} cell={cell} />
+                <GridCellItem key={`${rowIndex}-${colIndex}`} cell={cell || { id: `empty-${rowIndex}-${colIndex}` }} />
               ))
             ))}
           </div>

@@ -1,6 +1,6 @@
 
-import { ReactNode } from "react";
 import { Building, Home, Coffee, Music, ShoppingBag, Landmark, Flower, Theater, Utensils, Glasses } from "lucide-react";
+import { ReactNode } from "react";
 
 export interface GridCell {
   id?: string;
@@ -15,6 +15,20 @@ export type CityZone = {
   grid: (GridCell | null)[][];
 };
 
+// This is needed because we can't use JSX in .ts files, only in .tsx files
+const iconMap = {
+  building: Building,
+  home: Home,
+  coffee: Coffee,
+  music: Music,
+  shoppingBag: ShoppingBag,
+  landmark: Landmark,
+  flower: Flower,
+  theater: Theater,
+  utensils: Utensils,
+  glasses: Glasses
+};
+
 export const cityZones: CityZone[] = [
   {
     name: "Downtown",
@@ -22,35 +36,35 @@ export const cityZones: CityZone[] = [
       [
         { 
           id: "1101", 
-          icon: <Building className="h-5 w-5 text-blue-300" />, 
+          icon: undefined, // Will be set in React components
           name: "Empire State Building", 
           color: "bg-blue-600/60",
           description: "An iconic landmark and skyscraper in Midtown Manhattan."
         },
         { 
           id: "1102", 
-          icon: <Home className="h-5 w-5 text-pink-300" />, 
+          icon: undefined, 
           name: "Luxury Apartment", 
           color: "bg-pink-600/60",
           description: "High-end residential apartment with a view of the skyline."
         },
         { 
           id: "1103", 
-          icon: <Coffee className="h-5 w-5 text-yellow-300" />, 
+          icon: undefined, 
           name: "NY Coffee Shop", 
           color: "bg-yellow-600/60",
           description: "A cozy coffee shop serving artisanal brews."
         },
         { 
           id: "1104", 
-          icon: <Music className="h-5 w-5 text-purple-300" />, 
+          icon: undefined, 
           name: "Jazz Club", 
           color: "bg-purple-600/60",
           description: "A sophisticated venue for live jazz performances."
         },
         { 
           id: "1105", 
-          icon: <ShoppingBag className="h-5 w-5 text-red-300" />, 
+          icon: undefined, 
           name: "Fifth Avenue Store", 
           color: "bg-red-600/60",
           description: "A high-end retail store on the famous shopping street."
@@ -59,35 +73,35 @@ export const cityZones: CityZone[] = [
       [
         { 
           id: "1201", 
-          icon: <Landmark className="h-5 w-5 text-cyan-300" />, 
+          icon: undefined, 
           name: "Financial District", 
           color: "bg-cyan-600/60",
           description: "The heart of New York's financial world, including Wall Street."
         },
         { 
           id: "1202", 
-          icon: <Flower className="h-5 w-5 text-green-300" />, 
+          icon: undefined, 
           name: "City Park", 
           color: "bg-green-600/60",
           description: "A green space with trees, benches, and walking paths."
         },
         { 
           id: "1203", 
-          icon: <Theater className="h-5 w-5 text-indigo-300" />, 
+          icon: undefined, 
           name: "Broadway Theater", 
           color: "bg-indigo-600/60",
           description: "A prestigious theater showcasing renowned Broadway productions."
         },
         { 
           id: "1204", 
-          icon: <Utensils className="h-5 w-5 text-orange-300" />, 
+          icon: undefined, 
           name: "Upscale Restaurant", 
           color: "bg-orange-600/60",
           description: "A fine dining establishment with acclaimed chefs."
         },
         { 
           id: "1205", 
-          icon: <Glasses className="h-5 w-5 text-teal-300" />, 
+          icon: undefined, 
           name: "Rooftop Bar", 
           color: "bg-teal-600/60",
           description: "A stylish bar offering panoramic views of the city skyline."
@@ -148,7 +162,6 @@ export const cityZones: CityZone[] = [
         { id: "3203", color: "bg-green-600/60" },
         { id: "3204", color: "bg-green-600/60" },
         { id: "3205", 
-          icon: <Flower className="h-5 w-5 text-green-300" />, 
           name: "Central Park", 
           color: "bg-green-600/60",
           description: "An urban park spanning 843 acres in the heart of Manhattan." 
@@ -172,3 +185,36 @@ export const cityZones: CityZone[] = [
     ]
   }
 ];
+
+// Map for icon types, to be used in React components
+export type IconType = 
+  | "building" 
+  | "home" 
+  | "coffee" 
+  | "music" 
+  | "shoppingBag" 
+  | "landmark" 
+  | "flower" 
+  | "theater" 
+  | "utensils" 
+  | "glasses";
+
+// Cell metadata to add icons in React components  
+export const cellMetadata: Record<string, { iconType: IconType, color: string }> = {
+  "1101": { iconType: "building", color: "text-blue-300" },
+  "1102": { iconType: "home", color: "text-pink-300" },
+  "1103": { iconType: "coffee", color: "text-yellow-300" },
+  "1104": { iconType: "music", color: "text-purple-300" },
+  "1105": { iconType: "shoppingBag", color: "text-red-300" },
+  "1201": { iconType: "landmark", color: "text-cyan-300" },
+  "1202": { iconType: "flower", color: "text-green-300" },
+  "1203": { iconType: "theater", color: "text-indigo-300" },
+  "1204": { iconType: "utensils", color: "text-orange-300" },
+  "1205": { iconType: "glasses", color: "text-teal-300" },
+  "3205": { iconType: "flower", color: "text-green-300" }
+};
+
+// Function to get proper Lucide icon component
+export const getIconComponent = (iconType: IconType) => {
+  return iconMap[iconType];
+};
