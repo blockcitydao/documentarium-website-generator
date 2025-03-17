@@ -81,7 +81,7 @@ const Footer = () => {
             <li><a href="https://x.com/BlockCityDAO" target="_blank" rel="noopener noreferrer" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
               <Twitter className="h-4 w-4" /> <span>Twitter</span>
             </a></li>
-            <li><a href="https://github.com/blockcitydao/BCD-beta" target="_blank" rel="noopener noreferrer" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
+            <li><a href="https://github.com/blockcitydao/BCD" target="_blank" rel="noopener noreferrer" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
               <Github className="h-4 w-4" /> <span>GitHub</span>
             </a></li>
           </ul>
