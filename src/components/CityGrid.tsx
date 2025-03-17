@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Building, Home, Coffee, Music, ShoppingBag, Landmark, Park, Theater, Utensils, Glasses } from "lucide-react";
+import { Building, Home, Coffee, Music, ShoppingBag, Landmark, Flower, Theater, Utensils, Glasses } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 
@@ -185,7 +185,7 @@ function generateNYCGrid(): GridCell[][] {
     },
     { 
       id: "3205", 
-      icon: <Park className="h-5 w-5 text-green-300" />, 
+      icon: <Flower className="h-5 w-5 text-green-300" />, 
       name: "Central Park", 
       color: "bg-green-600/60",
       description: "An urban park spanning 843 acres in the heart of Manhattan." 
