@@ -1,119 +1,174 @@
 
+import { ReactNode } from "react";
 import { Building, Home, Coffee, Music, ShoppingBag, Landmark, Flower, Theater, Utensils, Glasses } from "lucide-react";
-import React from "react";
 
 export interface GridCell {
-  id: string;
-  icon?: React.ReactNode;
+  id?: string;
+  icon?: ReactNode;
   name?: string;
   color?: string;
   description?: string;
 }
 
-// Generate NYC grid data
-export function generateNYCGrid(): GridCell[][] {
-  // Create a 12x12 grid
-  const grid: GridCell[][] = [];
-  
-  // Initialize with empty cells
-  for (let i = 0; i < 12; i++) {
-    grid[i] = [];
-    for (let j = 0; j < 12; j++) {
-      const id = `${3000 + i * 100 + j}`;
-      grid[i][j] = { id };
-    }
+export type CityZone = {
+  name: string;
+  grid: (GridCell | null)[][];
+};
+
+export const cityZones: CityZone[] = [
+  {
+    name: "Downtown",
+    grid: [
+      [
+        { 
+          id: "1101", 
+          icon: <Building className="h-5 w-5 text-blue-300" />, 
+          name: "Empire State Building", 
+          color: "bg-blue-600/60",
+          description: "An iconic landmark and skyscraper in Midtown Manhattan."
+        },
+        { 
+          id: "1102", 
+          icon: <Home className="h-5 w-5 text-pink-300" />, 
+          name: "Luxury Apartment", 
+          color: "bg-pink-600/60",
+          description: "High-end residential apartment with a view of the skyline."
+        },
+        { 
+          id: "1103", 
+          icon: <Coffee className="h-5 w-5 text-yellow-300" />, 
+          name: "NY Coffee Shop", 
+          color: "bg-yellow-600/60",
+          description: "A cozy coffee shop serving artisanal brews."
+        },
+        { 
+          id: "1104", 
+          icon: <Music className="h-5 w-5 text-purple-300" />, 
+          name: "Jazz Club", 
+          color: "bg-purple-600/60",
+          description: "A sophisticated venue for live jazz performances."
+        },
+        { 
+          id: "1105", 
+          icon: <ShoppingBag className="h-5 w-5 text-red-300" />, 
+          name: "Fifth Avenue Store", 
+          color: "bg-red-600/60",
+          description: "A high-end retail store on the famous shopping street."
+        },
+      ],
+      [
+        { 
+          id: "1201", 
+          icon: <Landmark className="h-5 w-5 text-cyan-300" />, 
+          name: "Financial District", 
+          color: "bg-cyan-600/60",
+          description: "The heart of New York's financial world, including Wall Street."
+        },
+        { 
+          id: "1202", 
+          icon: <Flower className="h-5 w-5 text-green-300" />, 
+          name: "City Park", 
+          color: "bg-green-600/60",
+          description: "A green space with trees, benches, and walking paths."
+        },
+        { 
+          id: "1203", 
+          icon: <Theater className="h-5 w-5 text-indigo-300" />, 
+          name: "Broadway Theater", 
+          color: "bg-indigo-600/60",
+          description: "A prestigious theater showcasing renowned Broadway productions."
+        },
+        { 
+          id: "1204", 
+          icon: <Utensils className="h-5 w-5 text-orange-300" />, 
+          name: "Upscale Restaurant", 
+          color: "bg-orange-600/60",
+          description: "A fine dining establishment with acclaimed chefs."
+        },
+        { 
+          id: "1205", 
+          icon: <Glasses className="h-5 w-5 text-teal-300" />, 
+          name: "Rooftop Bar", 
+          color: "bg-teal-600/60",
+          description: "A stylish bar offering panoramic views of the city skyline."
+        },
+      ],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+    ]
+  },
+  {
+    name: "Midtown", 
+    grid: [
+      [null, null, null, null, null],
+      [
+        { id: "2101", color: "bg-purple-500/40" },
+        { id: "2102", color: "bg-purple-500/40" },
+        { id: "2103", color: "bg-purple-500/40" },
+        { id: "2104", color: "bg-purple-500/40" },
+        { id: "2105", color: "bg-purple-500/40" },
+      ],
+      [
+        { id: "2201", color: "bg-purple-500/40" },
+        { id: "2202", color: "bg-purple-500/40" },
+        { id: "2203", color: "bg-yellow-500/50" },
+        { id: "2204", color: "bg-yellow-500/50" },
+        { id: "2205", color: "bg-purple-500/40" },
+      ],
+      [
+        { id: "2301", color: "bg-purple-500/40" },
+        { id: "2302", color: "bg-yellow-500/50" },
+        { id: "2303", color: "bg-green-500/50" },
+        { id: "2304", color: "bg-green-500/50" },
+        { id: "2305", color: "bg-purple-500/40" },
+      ],
+      [
+        { id: "2401", color: "bg-purple-500/40" },
+        { id: "2402", color: "bg-purple-500/40" },
+        { id: "2403", color: "bg-purple-500/40" },
+        { id: "2404", color: "bg-purple-500/40" },
+        { id: "2405", color: "bg-purple-500/40" },
+      ],
+    ]
+  },
+  {
+    name: "Uptown",
+    grid: [
+      [
+        { id: "3101", color: "bg-purple-500/40" },
+        { id: "3102", color: "bg-purple-500/40" },
+        { id: "3103", color: "bg-purple-500/40" },
+        { id: "3104", color: "bg-purple-500/40" },
+        { id: "3105", color: "bg-purple-500/40" },
+      ],
+      [
+        { id: "3201", color: "bg-purple-500/40" },
+        { id: "3202", color: "bg-green-600/60" },
+        { id: "3203", color: "bg-green-600/60" },
+        { id: "3204", color: "bg-green-600/60" },
+        { id: "3205", 
+          icon: <Flower className="h-5 w-5 text-green-300" />, 
+          name: "Central Park", 
+          color: "bg-green-600/60",
+          description: "An urban park spanning 843 acres in the heart of Manhattan." 
+        },
+      ],
+      [
+        { id: "3301", color: "bg-purple-500/40" },
+        { id: "3302", color: "bg-green-600/60" },
+        { id: "3303", color: "bg-green-600/60" },
+        { id: "3304", color: "bg-green-600/60" },
+        { id: "3305", color: "bg-purple-500/40" },
+      ],
+      [
+        { id: "3401", color: "bg-purple-500/40" },
+        { id: "3402", color: "bg-red-500/40" },
+        { id: "3403", color: "bg-red-500/40" },
+        { id: "3404", color: "bg-red-500/40" },
+        { id: "3405", color: "bg-purple-500/40" },
+      ],
+      [null, null, null, null, null],
+    ]
   }
-  
-  // Add NYC landmarks and features
-  const landmarks: GridCell[] = [
-    { 
-      id: "3104", 
-      icon: <Landmark className="h-5 w-5 text-cyan-300" />, 
-      name: "Empire State", 
-      color: "bg-cyan-600/60",
-      description: "The iconic skyscraper in Midtown Manhattan with 102 stories." 
-    },
-    { 
-      id: "3205", 
-      icon: <Flower className="h-5 w-5 text-green-300" />, 
-      name: "Central Park", 
-      color: "bg-green-600/60",
-      description: "An urban park spanning 843 acres in the heart of Manhattan." 
-    },
-    { 
-      id: "3407", 
-      icon: <Building className="h-5 w-5 text-purple-300" />, 
-      name: "Times Square", 
-      color: "bg-purple-600/60",
-      description: "Major commercial intersection known for its bright lights and billboards." 
-    },
-    { 
-      id: "3010", 
-      icon: <Landmark className="h-5 w-5 text-blue-300" />, 
-      name: "Statue of Liberty", 
-      color: "bg-blue-600/60",
-      description: "A colossal neoclassical sculpture on Liberty Island in New York Harbor." 
-    },
-    { 
-      id: "3508", 
-      icon: <ShoppingBag className="h-5 w-5 text-pink-300" />, 
-      name: "5th Avenue", 
-      color: "bg-pink-600/60",
-      description: "Famous shopping street with luxury flagship stores and boutiques." 
-    },
-    { 
-      id: "3711", 
-      icon: <Theater className="h-5 w-5 text-yellow-300" />, 
-      name: "Broadway", 
-      color: "bg-yellow-600/60",
-      description: "Theatrical performances presented in 41 professional theaters." 
-    },
-    { 
-      id: "3309", 
-      icon: <Glasses className="h-5 w-5 text-indigo-300" />, 
-      name: "Brooklyn Bridge", 
-      color: "bg-indigo-600/60",
-      description: "A hybrid cable-stayed/suspension bridge connecting Manhattan and Brooklyn." 
-    },
-    { 
-      id: "3602", 
-      icon: <Music className="h-5 w-5 text-red-300" />, 
-      name: "Radio City", 
-      color: "bg-red-600/60",
-      description: "Entertainment venue located in Rockefeller Center in Midtown Manhattan." 
-    },
-    { 
-      id: "3412", 
-      icon: <Coffee className="h-5 w-5 text-amber-300" />, 
-      name: "Soho Cafes", 
-      color: "bg-amber-600/60",
-      description: "Trendy neighborhood with art galleries, boutiques, and cafés." 
-    },
-    { 
-      id: "3814", 
-      icon: <Utensils className="h-5 w-5 text-orange-300" />, 
-      name: "Little Italy", 
-      color: "bg-orange-600/60",
-      description: "Neighborhood in lower Manhattan known for Italian culture and cuisine." 
-    },
-    { 
-      id: "3214", 
-      icon: <Home className="h-5 w-5 text-teal-300" />, 
-      name: "Village Lofts", 
-      color: "bg-teal-600/60",
-      description: "Trendy residential area with historic brownstones and loft apartments." 
-    }
-  ];
-  
-  // Place landmarks on the grid
-  landmarks.forEach(landmark => {
-    const row = Math.floor((parseInt(landmark.id) - 3000) / 100);
-    const col = (parseInt(landmark.id) - 3000) % 100;
-    
-    if (row >= 0 && row < 12 && col >= 0 && col < 12) {
-      grid[row][col] = landmark;
-    }
-  });
-  
-  return grid;
-}
+];
