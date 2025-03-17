@@ -4,39 +4,15 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  image-rendering: pixelated;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(128, 90, 213, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(139, 92, 246, 0.8), rgba(214, 31, 255, 0.8));
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(139, 92, 246, 1), rgba(214, 31, 255, 1));
-}
-
-/* Text selection */
-::selection {
-  background: rgba(217, 70, 239, 0.7);
-  color: white;
-}
-
-/* Vaporwave grid animation */
+/* Pixel art grid animation */
 .grid-animation {
-  background-size: 100px 100px;
+  background-size: 32px 32px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
   animation: grid-move 20s linear infinite;
 }
 
@@ -45,21 +21,37 @@
     background-position: 0 0;
   }
   100% {
-    background-position: 100px 100px;
+    background-position: 32px 32px;
   }
 }
 
-/* Glowing effect for buttons and elements */
-.glow-effect {
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.7);
-  transition: box-shadow 0.3s ease;
+/* Pixelated borders */
+.pixel-border {
+  border-style: solid;
+  border-width: 4px;
+  border-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%238A2BE2'/%3E%3Crect x='0' y='0' width='4' height='4' fill='%23D580FF'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23D580FF'/%3E%3C/svg%3E") 8 / 8px / 2px stretch;
 }
 
-.glow-effect:hover {
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.9);
+/* Pixelated button */
+.pixel-button {
+  transition: all 0.1s;
+  position: relative;
+  box-shadow: 0 4px 0 #8A2BE2, 0 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Retro scanline effect */
+.pixel-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 #8A2BE2, 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Pixelated text */
+.pixel-text {
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  text-shadow: 2px 2px 0 #000;
+  letter-spacing: 1px;
+}
+
+/* Scanline effect for pixel art */
 .scanline {
   position: relative;
   overflow: hidden;
@@ -74,7 +66,7 @@
   left: 0;
   background: repeating-linear-gradient(
     transparent 0%,
-    rgba(0, 0, 0, 0.05) 0.5%,
+    rgba(0, 0, 0, 0.1) 0.5%,
     transparent 1%
   );
   animation: scanline 10s linear infinite;
@@ -89,4 +81,30 @@
   100% {
     transform: translateY(100%);
   }
+}
+
+/* Pixel corners */
+.pixel-corners {
+  clip-path: polygon(
+    0% 4px, 4px 4px, 4px 0%, calc(100% - 4px) 0%, calc(100% - 4px) 4px, 
+    100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0% calc(100% - 4px)
+  );
+}
+
+/* Glowing effect for pixel art elements */
+.pixel-glow {
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.7), 0 0 20px rgba(138, 43, 226, 0.5);
+  transition: box-shadow 0.3s steps(3);
+}
+
+.pixel-glow:hover {
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.9), 0 0 30px rgba(138, 43, 226, 0.7);
+}
+
+/* Pixelated background pattern */
+.pixel-bg {
+  background-color: #240052;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%23320070'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%23320070'/%3E%3C/svg%3E");
+  background-size: 16px 16px;
 }

@@ -21,38 +21,38 @@ const GridSection = () => {
         transition={{ duration: 0.5 }}
         className="flex-1"
       >
-        <h3 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300">
+        <h3 className="font-pixel text-2xl md:text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300 leading-relaxed">
           The City Grid System
         </h3>
         
         <div className="space-y-6 text-purple-100">
           <div className="flex gap-4">
-            <div className="mt-1 bg-cyan-500/20 p-2 rounded-lg">
+            <div className="mt-1 bg-cyan-500/20 p-2 rounded-lg pixel-corners">
               <Map className="h-6 w-6 text-cyan-300" />
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-cyan-300 mb-2">Multi-level City Map</h4>
-              <p>From global view to specific blocks, with A, B, C zones and a unique four-digit coordinate system.</p>
+              <h4 className="font-pixel text-lg font-semibold text-cyan-300 mb-2">Multi-level City Map</h4>
+              <p className="font-pixel-alt">From global view to specific blocks, with A, B, C zones and a unique four-digit coordinate system.</p>
             </div>
           </div>
           
           <div className="flex gap-4">
-            <div className="mt-1 bg-purple-500/20 p-2 rounded-lg">
+            <div className="mt-1 bg-purple-500/20 p-2 rounded-lg pixel-corners">
               <Grid className="h-6 w-6 text-purple-300" />
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-purple-300 mb-2">Unique Grid Assets</h4>
-              <p>Each grid has a unique number that serves as your digital identity. One-time purchase grants permanent ownership.</p>
+              <h4 className="font-pixel text-lg font-semibold text-purple-300 mb-2">Unique Grid Assets</h4>
+              <p className="font-pixel-alt">Each grid has a unique number that serves as your digital identity. One-time purchase grants permanent ownership.</p>
             </div>
           </div>
           
           <div className="flex gap-4">
-            <div className="mt-1 bg-pink-500/20 p-2 rounded-lg">
+            <div className="mt-1 bg-pink-500/20 p-2 rounded-lg pixel-corners">
               <Zap className="h-6 w-6 text-pink-300" />
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-pink-300 mb-2">Dynamic City Environment</h4>
-              <p>Visualized activity, day-night cycles, and neighborhood relationships forming unique street cultures.</p>
+              <h4 className="font-pixel text-lg font-semibold text-pink-300 mb-2">Dynamic City Environment</h4>
+              <p className="font-pixel-alt">Visualized activity, day-night cycles, and neighborhood relationships forming unique street cultures.</p>
             </div>
           </div>
         </div>
@@ -72,11 +72,11 @@ const GridSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
-              className="relative aspect-square"
+              className="relative aspect-square pixel-corners"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-lg opacity-80`}></div>
-              <div className="absolute inset-0 bg-[url('https://i.imgur.com/0vGhUC8.png')] bg-repeat opacity-30 mix-blend-overlay rounded-lg"></div>
-              <div className="absolute inset-0 flex items-center justify-center font-bold text-white text-lg">{item.number}</div>
+              <div className="absolute inset-0 grid-animation rounded-lg"></div>
+              <div className="absolute inset-0 flex items-center justify-center font-pixel text-white text-lg">{item.number}</div>
             </motion.div>
           ))}
         </div>

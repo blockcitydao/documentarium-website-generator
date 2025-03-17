@@ -35,20 +35,20 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-gradient-to-b from-purple-900 via-purple-800 to-pink-900">
+    <div className="min-h-screen overflow-x-hidden pixel-bg scanline">
       {/* Hero Section */}
       <HeroSection scrollToFeatures={scrollToFeatures} />
       
       {/* City Grid System */}
       <section ref={featuresRef} className="relative py-20 px-4 md:px-8">
-        <div className="absolute inset-0 z-0 opacity-20 bg-[url('https://i.imgur.com/8gPofmZ.jpg')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 z-0 opacity-20 pixel-bg"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300"
+              className="font-pixel text-2xl md:text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 leading-relaxed"
             >
               Digital City, Real Value
             </motion.h2>
@@ -56,7 +56,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-purple-100 max-w-2xl mx-auto"
+              className="font-pixel-alt text-xl text-purple-100 max-w-2xl mx-auto"
             >
               Own a piece of the future with our grid-based digital city
             </motion.p>
@@ -76,7 +76,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300"
+            className="font-pixel text-2xl md:text-3xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 leading-relaxed"
           >
             Six Dimensions of Value
           </motion.h2>
@@ -117,13 +117,13 @@ const Index = () => {
       </section>
       
       {/* Roadmap */}
-      <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-purple-900 via-purple-800 to-pink-900">
+      <section className="py-20 px-4 md:px-8 pixel-bg">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300"
+            className="font-pixel text-2xl md:text-3xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 leading-relaxed"
           >
             City Construction Timeline
           </motion.h2>
@@ -165,13 +165,13 @@ const Index = () => {
       
       {/* CTA Section with Email Signup */}
       <section className="py-16 px-4 md:px-8 bg-gradient-to-r from-pink-600/90 via-purple-600/90 to-blue-600/90 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-30 bg-[url('https://i.imgur.com/JFuXgPK.jpg')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 z-0 opacity-30 grid-animation"></div>
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold mb-4 text-white"
+            className="font-pixel text-2xl md:text-3xl font-bold mb-4 text-white"
           >
             Ready to Join Block City?
           </motion.h2>
@@ -179,7 +179,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-8 text-purple-100 max-w-2xl mx-auto"
+            className="font-pixel-alt mb-8 text-purple-100 max-w-2xl mx-auto"
           >
             Become a permanent resident and help shape the future of our digital metropolis
           </motion.p>
@@ -195,9 +195,9 @@ const Index = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-white/20 border-white/30 text-white placeholder:text-white/70"
+                className="pixel-corners bg-white/20 border-white/30 text-white placeholder:text-white/70 font-pixel-alt"
               />
-              <Button type="submit" size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none">
+              <Button type="submit" size="lg" className="pixel-button font-pixel text-sm bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none">
                 Subscribe
               </Button>
             </form>
@@ -281,30 +281,30 @@ const Index = () => {
                   </g>
                 </g>
               </svg>
-              <h3 className="text-xl font-bold text-white">Block City DAO</h3>
+              <h3 className="font-pixel text-lg font-bold text-white">Block City DAO</h3>
             </div>
-            <p className="mb-4">A community-governed, AI-empowered digital city ecosystem on the blockchain</p>
+            <p className="font-pixel-alt mb-4">A community-governed, AI-empowered digital city ecosystem on the blockchain</p>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Resources</h4>
+            <h4 className="font-pixel text-lg font-semibold mb-4 text-white">Resources</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition flex items-center gap-2">
+              <li><a href="#" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
                 <span>Whitepaper</span>
               </a></li>
-              <li><a href="#" className="hover:text-white transition flex items-center gap-2">
+              <li><a href="#" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
                 <span>Tokenomics</span>
               </a></li>
-              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition flex items-center gap-2">
+              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
                 <Twitter className="h-4 w-4" /> <span>Twitter</span>
               </a></li>
-              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition flex items-center gap-2">
+              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
                 <Github className="h-4 w-4" /> <span>GitHub</span>
               </a></li>
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-purple-800 text-center text-sm text-purple-400">
+        <div className="mt-12 pt-8 border-t border-purple-800 text-center text-sm font-pixel-alt text-purple-400">
           &copy; {new Date().getFullYear()} Block City DAO. All rights reserved.
         </div>
       </footer>
