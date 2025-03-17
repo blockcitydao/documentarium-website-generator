@@ -16,6 +16,18 @@ export type CityZone = {
 };
 
 // This is needed because we can't use JSX in .ts files, only in .tsx files
+export type IconType = 
+  | "building" 
+  | "home" 
+  | "coffee" 
+  | "music" 
+  | "shoppingBag" 
+  | "landmark" 
+  | "flower" 
+  | "theater" 
+  | "utensils" 
+  | "glasses";
+
 const iconMap = {
   building: Building,
   home: Home,
@@ -27,6 +39,26 @@ const iconMap = {
   theater: Theater,
   utensils: Utensils,
   glasses: Glasses
+};
+
+// Cell metadata to add icons in React components
+export const cellMetadata: Record<string, { iconType: IconType, color: string }> = {
+  "1101": { iconType: "building", color: "text-blue-300" },
+  "1102": { iconType: "home", color: "text-pink-300" },
+  "1103": { iconType: "coffee", color: "text-yellow-300" },
+  "1104": { iconType: "music", color: "text-purple-300" },
+  "1105": { iconType: "shoppingBag", color: "text-red-300" },
+  "1201": { iconType: "landmark", color: "text-cyan-300" },
+  "1202": { iconType: "flower", color: "text-green-300" },
+  "1203": { iconType: "theater", color: "text-indigo-300" },
+  "1204": { iconType: "utensils", color: "text-orange-300" },
+  "1205": { iconType: "glasses", color: "text-teal-300" },
+  "3205": { iconType: "flower", color: "text-green-300" }
+};
+
+// Function to get proper Lucide icon component
+export const getIconComponent = (iconType: IconType) => {
+  return iconMap[iconType];
 };
 
 export const cityZones: CityZone[] = [
@@ -185,36 +217,3 @@ export const cityZones: CityZone[] = [
     ]
   }
 ];
-
-// Map for icon types, to be used in React components
-export type IconType = 
-  | "building" 
-  | "home" 
-  | "coffee" 
-  | "music" 
-  | "shoppingBag" 
-  | "landmark" 
-  | "flower" 
-  | "theater" 
-  | "utensils" 
-  | "glasses";
-
-// Cell metadata to add icons in React components  
-export const cellMetadata: Record<string, { iconType: IconType, color: string }> = {
-  "1101": { iconType: "building", color: "text-blue-300" },
-  "1102": { iconType: "home", color: "text-pink-300" },
-  "1103": { iconType: "coffee", color: "text-yellow-300" },
-  "1104": { iconType: "music", color: "text-purple-300" },
-  "1105": { iconType: "shoppingBag", color: "text-red-300" },
-  "1201": { iconType: "landmark", color: "text-cyan-300" },
-  "1202": { iconType: "flower", color: "text-green-300" },
-  "1203": { iconType: "theater", color: "text-indigo-300" },
-  "1204": { iconType: "utensils", color: "text-orange-300" },
-  "1205": { iconType: "glasses", color: "text-teal-300" },
-  "3205": { iconType: "flower", color: "text-green-300" }
-};
-
-// Function to get proper Lucide icon component
-export const getIconComponent = (iconType: IconType) => {
-  return iconMap[iconType];
-};
