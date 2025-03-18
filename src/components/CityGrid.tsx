@@ -45,6 +45,14 @@ const CityGrid = () => {
           >
             Explore your digital future in the city that never sleeps
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="font-pixel-alt text-md text-purple-300 mt-2 max-w-2xl mx-auto"
+          >
+            More cities coming soon
+          </motion.p>
         </div>
         
         {/* Zone Tabs */}
