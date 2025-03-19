@@ -9,23 +9,23 @@ const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const { toast } = useToast();
 
-  // Local GIF file path - place your GIF in the public folder
-  // Example: if your file is named "animation.gif" in the public folder, 
-  // the path would be "/animation.gif"
-  const gifUrl = "/your-animation.gif"; 
+  // You can use either:
+  // 1. A remote URL: "https://example.com/your-animation.gif"
+  // 2. A local file in the public folder: "/your-animation.gif"
+  const gifUrl = "https://i.imgur.com/wW5JZcq.gif"; // Using a sample Imgur GIF by default
 
   const handlePlay = () => {
     setIsPlaying(true);
     toast({
       title: "Animation playing",
-      description: "Click elsewhere to return to the main view.",
+      description: "Click anywhere on the animation to return to the main view.",
     });
   };
 
   const handleImageError = () => {
     toast({
-      title: "Animation not found",
-      description: "Please add your GIF file to the public folder and update the path in VideoSection.tsx",
+      title: "GIF loading error",
+      description: "The animation could not be loaded. Please check the URL or file path.",
       variant: "destructive",
     });
   };
