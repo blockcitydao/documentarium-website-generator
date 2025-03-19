@@ -1,4 +1,3 @@
-
 import { Github, Twitter } from "lucide-react";
 
 const Footer = () => {
@@ -72,12 +71,6 @@ const Footer = () => {
         <div>
           <h4 className="font-pixel text-lg font-semibold mb-4 text-white">Resources</h4>
           <ul className="space-y-2">
-            <li><a href="#" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
-              <span>Whitepaper</span>
-            </a></li>
-            <li><a href="#" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
-              <span>Tokenomics</span>
-            </a></li>
             <li><a href="https://x.com/BlockCityDAO" target="_blank" rel="noopener noreferrer" className="font-pixel-alt hover:text-white transition flex items-center gap-2 pixel-text">
               <Twitter className="h-4 w-4" /> <span>Twitter</span>
             </a></li>

@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Twitter } from "lucide-react";
+import { ChevronDown, Twitter, Github } from "lucide-react";
 
 interface HeroSectionProps {
   scrollToFeatures: () => void;
@@ -108,8 +108,9 @@ const HeroSection = ({ scrollToFeatures }: HeroSectionProps) => {
             <Button 
               size="lg" 
               className="pixel-button font-pixel text-sm bg-gradient-to-r from-pixel-purple to-blue-500 hover:from-pixel-purple hover:to-blue-600 text-white border-none"
+              onClick={() => window.open('https://github.com/blockcitydao/BCD', '_blank')}
             >
-              Explore the City
+              <Github className="mr-2 h-4 w-4" /> GitHub
             </Button>
             <Button 
               variant="outline" 
