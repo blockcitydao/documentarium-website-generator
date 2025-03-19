@@ -3,12 +3,32 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const { toast } = useToast();
 
-  // Custom GIF URL - you can replace this with your own GIF URL
-  const gifUrl = "https://example.com/your-animation.gif"; // Replace with your actual GIF URL
+  // Local GIF file path - place your GIF in the public folder
+  // Example: if your file is named "animation.gif" in the public folder, 
+  // the path would be "/animation.gif"
+  const gifUrl = "/your-animation.gif"; 
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+    toast({
+      title: "Animation playing",
+      description: "Click elsewhere to return to the main view.",
+    });
+  };
+
+  const handleImageError = () => {
+    toast({
+      title: "Animation not found",
+      description: "Please add your GIF file to the public folder and update the path in VideoSection.tsx",
+      variant: "destructive",
+    });
+  };
 
   return (
     <section className="py-20 px-4 md:px-8 bg-gradient-to-r from-blue-900/90 via-purple-900/90 to-pink-900/90 relative overflow-hidden">
@@ -34,10 +54,12 @@ const VideoSection = () => {
             <img 
               src={gifUrl} 
               alt="Block City Animation"
-              className="absolute inset-0 w-full h-full object-cover" 
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={handleImageError}
+              onClick={() => setIsPlaying(false)}
             />
           ) : (
-            <div className="relative w-full h-full bg-gradient-to-br from-purple-900 to-pink-900 cursor-pointer" onClick={() => setIsPlaying(true)}>
+            <div className="relative w-full h-full bg-gradient-to-br from-purple-900 to-pink-900 cursor-pointer" onClick={handlePlay}>
               <div className="absolute inset-0 bg-[url('https://i.imgur.com/NZMunUd.jpg')] bg-cover bg-center opacity-80"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-purple-900/60 to-pink-900/60"></div>
               <div className="absolute inset-0 flex items-center justify-center">
