@@ -7,8 +7,8 @@ import { Play } from "lucide-react";
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Custom video URL - you can replace this with your own video URL
-  const videoUrl = "https://www.example.com/your-video.mp4"; // Replace with your actual video URL
+  // Custom GIF URL - you can replace this with your own GIF URL
+  const gifUrl = "https://example.com/your-animation.gif"; // Replace with your actual GIF URL
 
   return (
     <section className="py-20 px-4 md:px-8 bg-gradient-to-r from-blue-900/90 via-purple-900/90 to-pink-900/90 relative overflow-hidden">
@@ -31,12 +31,10 @@ const VideoSection = () => {
           className="relative mx-auto max-w-4xl rounded-xl overflow-hidden aspect-video shadow-2xl shadow-purple-500/30"
         >
           {isPlaying ? (
-            <video 
-              src={videoUrl} 
-              className="absolute inset-0 w-full h-full object-cover"
-              autoPlay 
-              controls
-              playsInline
+            <img 
+              src={gifUrl} 
+              alt="Block City Animation"
+              className="absolute inset-0 w-full h-full object-cover" 
             />
           ) : (
             <div className="relative w-full h-full bg-gradient-to-br from-purple-900 to-pink-900 cursor-pointer" onClick={() => setIsPlaying(true)}>
@@ -52,7 +50,7 @@ const VideoSection = () => {
                 </Button>
               </div>
               <div className="absolute bottom-4 left-4 right-4 text-center text-white font-medium text-lg">
-                Click to watch our introduction video
+                Click to view our animation
               </div>
             </div>
           )}
