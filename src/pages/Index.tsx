@@ -3,7 +3,6 @@ import { useRef } from "react";
 import HeroSection from "@/components/HeroSection";
 import DigitalCitySection from "@/components/DigitalCitySection";
 import CityGrid from "@/components/CityGrid";
-import VideoSection from "@/components/VideoSection";
 import ValuePillarsSection from "@/components/ValuePillarsSection";
 import RoadmapSection from "@/components/RoadmapSection";
 import FAQ from "@/components/FAQ";
@@ -27,9 +26,6 @@ const Index = () => {
       
       {/* New York City Grid Showcase */}
       <CityGrid />
-      
-      {/* Video Section */}
-      <VideoSection />
       
       {/* Value Pillars */}
       <ValuePillarsSection />
