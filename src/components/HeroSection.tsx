@@ -115,7 +115,7 @@ const HeroSection = ({ scrollToFeatures }: HeroSectionProps) => {
               variant="outline" 
               size="lg" 
               className="font-pixel text-sm border-2 border-purple-300 text-purple-300 hover:bg-purple-300/20" 
-              onClick={() => window.open('https://twitter.com', '_blank')}
+              onClick={() => window.open('https://x.com/BlockCityDAO', '_blank')}
             >
               <Twitter className="mr-2 h-4 w-4" /> Twitter
             </Button>
