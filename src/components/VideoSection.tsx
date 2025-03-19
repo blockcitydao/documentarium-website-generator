@@ -7,6 +7,9 @@ import { Play } from "lucide-react";
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Custom video URL - you can replace this with your own video URL
+  const videoUrl = "https://www.example.com/your-video.mp4"; // Replace with your actual video URL
+
   return (
     <section className="py-20 px-4 md:px-8 bg-gradient-to-r from-blue-900/90 via-purple-900/90 to-pink-900/90 relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-30 bg-[url('https://i.imgur.com/0vGhUC8.png')] bg-repeat mix-blend-overlay"></div>
@@ -28,13 +31,13 @@ const VideoSection = () => {
           className="relative mx-auto max-w-4xl rounded-xl overflow-hidden aspect-video shadow-2xl shadow-purple-500/30"
         >
           {isPlaying ? (
-            <iframe 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
-              className="absolute inset-0 w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <video 
+              src={videoUrl} 
+              className="absolute inset-0 w-full h-full object-cover"
+              autoPlay 
+              controls
+              playsInline
+            />
           ) : (
             <div className="relative w-full h-full bg-gradient-to-br from-purple-900 to-pink-900 cursor-pointer" onClick={() => setIsPlaying(true)}>
               <div className="absolute inset-0 bg-[url('https://i.imgur.com/NZMunUd.jpg')] bg-cover bg-center opacity-80"></div>
